@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webcontent-deployment
+  labels:
+    app: webcontent-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webcontent01
+  template:
+    metadata:
+      labels:
+        app: webcontent01
+    spec:
+      containers:
+      - name: webcontent
+        image: creges.azurecr.io/webcontent:v3
+        ports:
+        - containerPort: 80
